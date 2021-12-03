@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.fragment.findNavController
 import com.example.boardbattle2_0.ApplicationFragment
 import com.example.boardbattle2_0.R
@@ -17,6 +18,16 @@ class GameFragment : ApplicationFragment() {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_game, container, false)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        val callback = object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                //TODO implement showing alert dialog
+            }
+        }
+        //requireActivity().onBackPressedDispatcher.addCallback(callback)
+        super.onCreate(savedInstanceState)
     }
 
 }

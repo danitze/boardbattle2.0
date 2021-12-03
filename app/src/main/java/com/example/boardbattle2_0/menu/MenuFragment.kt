@@ -40,8 +40,8 @@ class MenuFragment : ApplicationFragment() {
         lifecycleScope.launchWhenStarted {
             viewModel.navFlow.collect {
                 when(it) {
-                    TO_GAME -> findNavController().navigate(R.id.action_menu_to_game)
-                    TO_SETTINGS -> findNavController().navigate(R.id.action_menu_to_settings)
+                    TO_GAME -> navigateAndReset(R.id.action_menu_to_game)
+                    TO_SETTINGS -> navigateAndReset(R.id.action_menu_to_settings)
                     TO_EXIT -> requireActivity().finish()
                 }
             }
@@ -53,6 +53,11 @@ class MenuFragment : ApplicationFragment() {
         R.id.settingsBtn -> viewModel.navigate(TO_SETTINGS)
         R.id.exitBtn -> viewModel.navigate(TO_EXIT)
         else -> {}
+    }
+
+    private fun navigateAndReset(navActionRes: Int) {
+        viewModel.reset()
+        findNavController().navigate(navActionRes)
     }
 
 }
