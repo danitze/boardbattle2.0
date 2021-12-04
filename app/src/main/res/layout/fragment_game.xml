@@ -51,22 +51,24 @@
         android:id="@+id/myScoreTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:textSize="35sp"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/my_player_color"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@id/controllerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/boardView"
-        tools:text="Score: 12" />
+        tools:text="Територія: 12 (23 %)" />
 
     <TextView
         android:id="@+id/enemyScoreTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:textSize="35sp"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/enemy_player_color"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@id/boardView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Score: 12" />
+        tools:text="Територія: 12 (23 %)" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

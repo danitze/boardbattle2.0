@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">BoardBattle 2.0</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="play">грати</string>
+    <string name="settings">налаштування</string>
+    <string name="exit">вийти</string>
+    <string name="game_points">Територія: %1$s (%2$s %)</string>
 </resources>
