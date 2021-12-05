@@ -9,6 +9,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.boardbattle2_0.R
 import com.example.boardbattle2_0.views.BoardView
 import com.example.boardbattle2_0.views.ControllerView
@@ -46,6 +47,9 @@ class GameFragment : Fragment() {
         val boardView = view.findViewById<BoardView>(R.id.boardView)
         lifecycleScope.launch {
             viewModel.gameStatesFlow.collect {
+                if(it.freeSpace == 0) {
+                    findNavController().popBackStack()
+                }
                 boardView.setBoard(it)
             }
         }

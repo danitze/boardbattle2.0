@@ -13,5 +13,6 @@ data class GameState(
     var xPos: Int = 0,
     var yPos: Int = 0,
     var figureWidth: Int = 0,
-    var figureHeight: Int = 0
+    var figureHeight: Int = 0,
+    var freeSpace: Int = CELLS_HORIZONTAL * CELLS_VERTICAL
 )

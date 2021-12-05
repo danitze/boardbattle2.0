@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".game.GameFragment"
-    android:background="@color/beige_background">
+    android:background="@color/background_color_2"
+    tools:context=".game.GameFragment">
 
     <com.example.boardbattle2_0.views.ControllerView
         android:id="@+id/controllerView"
@@ -28,7 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
+            android:background="@color/control_buttons_color"
+            android:textColor="@color/dark_add_color"
             tools:text="turn" />
 
         <com.example.boardbattle2_0.views.AppButton
@@ -37,6 +40,8 @@
             android:layout_height="0dp"
             android:layout_gravity="center"
             android:layout_weight="1"
+            android:background="@color/control_buttons_color"
+            android:textColor="@color/dark_add_color"
             tools:text="place" />
 
     </LinearLayout>

@@ -63,6 +63,9 @@ class Game {
     }
 
     fun nextMove() = with(gameState) {
+        if(freeSpace == 0) {
+            return@with
+        }
         do {
             playerNum = (playerNum % PLAYERS_COUNT) + 1
             figureWidth = (1..MAX_FIGURE_SIZE).random()
@@ -87,6 +90,7 @@ class Game {
                     board[i, j, 0] = 0
                 }
             }
+            freeSpace -= figureWidth * figureHeight
             return@with true
         }
         false

@@ -40,7 +40,7 @@ class BoardView(
     private fun createCell(row: Int, column: Int): View {
         val cell = View(context)
         cell.layoutParams = LayoutParams(cellSize, cellSize)
-        cell.background = context.getDrawable(R.color.neutral_cell_color) //TODO standard background image
+        cell.background = getColor(R.color.background_color_1) //TODO standard background image
         cells[row][column] = cell
         return cell
     }
@@ -50,12 +50,12 @@ class BoardView(
         for(i in cells.indices) {
             for(j in cells[i].indices) {
                 cells[i][j]?.background = if(state.board[i, j, 0] != 0) {
-                        if(canPlace) context.getDrawable(R.color.can_place_color) //TODO set normal backgrounds
-                    else context.getDrawable(R.color.cannot_place_color)
+                    if(canPlace) getColor(R.color.can_place_color) //TODO set normal backgrounds
+                    else getColor(R.color.cannot_place_color)
                 } else when(state.board[i, j, 1]) {
-                    1 -> context.getDrawable(R.color.my_player_color)
-                    2 -> context.getDrawable(R.color.enemy_player_color)
-                    else -> context.getDrawable(R.color.neutral_cell_color)
+                    1 -> getColor(R.color.my_player_color)
+                    2 -> getColor(R.color.enemy_player_color)
+                    else -> getColor(R.color.background_color_1)
                 }
             }
         }
