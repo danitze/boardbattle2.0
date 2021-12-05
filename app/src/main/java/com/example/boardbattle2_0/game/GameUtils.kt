@@ -36,7 +36,7 @@ fun GameState.canPlace(): Boolean {
         return true
     }
 
-    if(playerNum == 2 && xPos == 0 && yPos == 2) {
+    if(playerNum == 2 && xPos == 0 && yPos == 0) {
         return true
     }
 

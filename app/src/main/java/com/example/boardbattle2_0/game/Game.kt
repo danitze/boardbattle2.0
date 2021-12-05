@@ -73,7 +73,11 @@ class Game {
         resetActiveFigure()
     }
 
-    fun turn() = gameState.turn()
+    fun turn() {
+        gameState.clearActiveFigure()
+        gameState.turn()
+        gameState.resetActiveFigure()
+    }
 
     fun place() = with(gameState) {
         if(canPlace()) {

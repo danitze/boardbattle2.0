@@ -4,13 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.boardbattle2_0.R
 import com.example.boardbattle2_0.views.BoardView
+import com.example.boardbattle2_0.views.ControllerView
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class GameFragment : Fragment() {
 
@@ -26,6 +29,7 @@ class GameFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpObservers(view)
+        setUpControllers(view)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,12 +42,37 @@ class GameFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-    fun setUpObservers(view: View) {
+    private fun setUpObservers(view: View) {
         val boardView = view.findViewById<BoardView>(R.id.boardView)
-        lifecycleScope.launchWhenStarted {
-            viewModel.gameFlow.collect {
+        lifecycleScope.launch {
+            viewModel.gameStatesFlow.collect {
                 boardView.setBoard(it)
             }
+        }
+    }
+
+    private fun setUpControllers(view: View) {
+        val controllerView = view.findViewById<ControllerView>(R.id.controllerView)
+        controllerView.setClickListeners(
+            leftClick = viewModel::moveLeft,
+            rightClick = viewModel::moveRight,
+            upClick = viewModel::moveUp,
+            downClick = viewModel::moveDown
+        )
+
+        controllerView.setLongClickListeners(
+            leftLongClick = viewModel::moveLeftTillStart,
+            rightLongClick = viewModel::moveRightTillEnd,
+            upLongClick = viewModel::moveUpTillStart,
+            downLongClick = viewModel::moveDownTillEnd
+        )
+
+        view.findViewById<Button>(R.id.turnBtn).setOnClickListener {
+            viewModel.turn()
+        }
+
+        view.findViewById<Button>(R.id.placeBtn).setOnClickListener {
+            viewModel.place()
         }
     }
 
