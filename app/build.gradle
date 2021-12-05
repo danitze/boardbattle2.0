@@ -56,4 +56,8 @@ dependencies {
     //Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+
+    //Multik
+    implementation "org.jetbrains.kotlinx:multik-api:0.1.1"
+    implementation "org.jetbrains.kotlinx:multik-default:0.1.1"
 }
