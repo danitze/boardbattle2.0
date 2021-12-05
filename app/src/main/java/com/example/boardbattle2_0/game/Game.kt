@@ -10,6 +10,10 @@ class Game {
 
     val gameState = GameState()
 
+    init {
+        nextMove()
+    }
+
     fun moveRight() = with(gameState) {
         if (xPos + figureWidth < CELLS_HORIZONTAL) {
             clearActiveFigure()
@@ -63,18 +67,16 @@ class Game {
     }
 
     fun nextMove() = with(gameState) {
-        playerNum = (playerNum % PLAYERS_COUNT) + 1
-        figureWidth = (1..MAX_FIGURE_SIZE).random()
-        figureHeight = (1..MAX_FIGURE_SIZE).random()
-        xPos = if(playerNum == 1) CELLS_HORIZONTAL - figureWidth else 0
-        yPos = if(playerNum == 1) CELLS_VERTICAL - gameState.figureHeight else 0
+        do {
+            playerNum = (playerNum % PLAYERS_COUNT) + 1
+            figureWidth = (1..MAX_FIGURE_SIZE).random()
+            figureHeight = (1..MAX_FIGURE_SIZE).random()
+            xPos = if (playerNum == 1) CELLS_HORIZONTAL - figureWidth else 0
+            yPos = if (playerNum == 1) CELLS_VERTICAL - gameState.figureHeight else 0
+        } while (!isPlaceForFigure())
     }
 
-    fun turn() = with(gameState) {
-        if (xPos + figureHeight <= CELLS_HORIZONTAL && yPos + figureWidth <= CELLS_VERTICAL) {
-            figureHeight = figureWidth.also { figureWidth = figureHeight }
-        }
-    }
+    fun turn() = gameState.turn()
 
     fun place() = with(gameState) {
         for(i in yPos until yPos + figureHeight) {
@@ -85,5 +87,29 @@ class Game {
         }
     }
 
+    private fun isPlaceForFigure() = with(gameState.copy()) {
+        for (i in 0..CELLS_VERTICAL - figureHeight) {
+            for (j in 0..CELLS_HORIZONTAL - figureWidth) {
+                xPos = j
+                yPos = i
+                if (canPlace()) {
+                    return@with true
+                }
+            }
+        }
 
+        xPos = 0
+        yPos = 0
+        turn()
+        for (i in 0..CELLS_VERTICAL - figureHeight) {
+            for (j in 0..CELLS_HORIZONTAL - figureWidth) {
+                xPos = j
+                yPos = i
+                if (canPlace()) {
+                    return@with true
+                }
+            }
+        }
+        false
+    }
 }
