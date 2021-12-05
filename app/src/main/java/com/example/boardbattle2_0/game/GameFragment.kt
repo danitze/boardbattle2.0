@@ -5,13 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import androidx.navigation.fragment.findNavController
-import com.example.boardbattle2_0.ApplicationFragment
+import androidx.fragment.app.Fragment
 import com.example.boardbattle2_0.R
 
-class GameFragment : ApplicationFragment() {
-
-    override fun navigateUp(): Boolean = findNavController().navigateUp()
+class GameFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
