@@ -1,5 +1,6 @@
 package com.example.boardbattle2_0.game
 
+import android.util.Log
 import com.example.boardbattle2_0.CELLS_HORIZONTAL
 import com.example.boardbattle2_0.CELLS_VERTICAL
 import org.jetbrains.kotlinx.multik.ndarray.data.get
@@ -9,10 +10,6 @@ import org.jetbrains.kotlinx.multik.ndarray.data.set
 class Game {
 
     val gameState = GameState()
-
-    init {
-        nextMove()
-    }
 
     fun moveRight() = with(gameState) {
         if (xPos + figureWidth < CELLS_HORIZONTAL) {
@@ -74,17 +71,22 @@ class Game {
             xPos = if (playerNum == 1) CELLS_HORIZONTAL - figureWidth else 0
             yPos = if (playerNum == 1) CELLS_VERTICAL - gameState.figureHeight else 0
         } while (!isPlaceForFigure())
+        resetActiveFigure()
     }
 
     fun turn() = gameState.turn()
 
     fun place() = with(gameState) {
-        for(i in yPos until yPos + figureHeight) {
-            for (j in xPos until xPos + figureWidth) {
-                board[i, j, 1] = board[i, j, 0]
-                board[i, j, 0] = 0
+        if(canPlace()) {
+            for (i in yPos until yPos + figureHeight) {
+                for (j in xPos until xPos + figureWidth) {
+                    board[i, j, 1] = board[i, j, 0]
+                    board[i, j, 0] = 0
+                }
             }
+            return@with true
         }
+        false
     }
 
     private fun isPlaceForFigure() = with(gameState.copy()) {
