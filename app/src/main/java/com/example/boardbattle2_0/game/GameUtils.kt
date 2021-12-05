@@ -2,6 +2,7 @@ package com.example.boardbattle2_0.game
 
 import com.example.boardbattle2_0.CELLS_HORIZONTAL
 import com.example.boardbattle2_0.CELLS_VERTICAL
+import com.example.boardbattle2_0.game.data.GameState
 import org.jetbrains.kotlinx.multik.ndarray.data.get
 import org.jetbrains.kotlinx.multik.ndarray.data.set
 

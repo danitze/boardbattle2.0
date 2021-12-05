@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -51,6 +52,16 @@ class GameFragment : Fragment() {
                     findNavController().popBackStack()
                 }
                 boardView.setBoard(it)
+                view.findViewById<TextView>(R.id.myScoreTv).text = getString(
+                    R.string.game_points,
+                    viewModel.getPlayerSpace(1),
+                    viewModel.getPlayerSpacePercent(1)
+                )
+                view.findViewById<TextView>(R.id.enemyScoreTv).text = getString(
+                    R.string.game_points,
+                    viewModel.getPlayerSpace(2),
+                    viewModel.getPlayerSpacePercent(2)
+                )
             }
         }
     }

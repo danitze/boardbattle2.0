@@ -4,5 +4,5 @@
     <string name="play">грати</string>
     <string name="settings">налаштування</string>
     <string name="exit">вийти</string>
-    <string name="game_points">Територія: %1$s (%2$s %)</string>
+    <string name="game_points">Територія: %1$d (%2$d \%%)</string>
 </resources>

@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.example.boardbattle2_0.*
-import com.example.boardbattle2_0.game.GameState
+import com.example.boardbattle2_0.game.data.GameState
 import com.example.boardbattle2_0.game.canPlace
 import org.jetbrains.kotlinx.multik.ndarray.data.get
 
