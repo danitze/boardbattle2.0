@@ -1,71 +1,74 @@
 package com.example.boardbattle2_0.game
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 
-class GameViewModel(application: Application) : AndroidViewModel(application) {
-    private val _gameStateFlow: MutableStateFlow<GameState>
-    val gameFlow: StateFlow<GameState>
-
+class GameViewModel : ViewModel() {
     private val game = Game()
+
+    private val _gameStatesFlow = MutableSharedFlow<GameState>()
+    val gameStatesFlow: SharedFlow<GameState> = _gameStatesFlow.asSharedFlow()
+
     init {
         game.nextMove()
-        _gameStateFlow = MutableStateFlow(game.gameState)
-        gameFlow = _gameStateFlow.asStateFlow()
+        emitGameState()
     }
 
     fun moveLeft() {
         game.moveLeft()
-        _gameStateFlow.value = game.gameState
+        emitGameState()
     }
 
     fun moveRight() {
         game.moveRight()
-        _gameStateFlow.value = game.gameState
+        emitGameState()
     }
 
     fun moveUp() {
         game.moveUp()
-        _gameStateFlow.value = game.gameState
+        emitGameState()
     }
 
     fun moveDown() {
         game.moveDown()
-        _gameStateFlow.value = game.gameState
+        emitGameState()
     }
 
     fun moveLeftTillStart() {
         game.moveLeftTillStart()
-        _gameStateFlow.value = game.gameState
+        emitGameState()
     }
 
     fun moveRightTillEnd() {
         game.moveRightTillEnd()
-        _gameStateFlow.value = game.gameState
+        emitGameState()
     }
 
     fun moveUpTillStart() {
         game.moveUpTillStart()
-        _gameStateFlow.value = game.gameState
+        emitGameState()
     }
 
     fun moveDownTillEnd() {
         game.moveDownTillEnd()
-        _gameStateFlow.value = game.gameState
+        emitGameState()
     }
 
     fun turn() {
         game.turn()
-        _gameStateFlow.value = game.gameState
+        emitGameState()
     }
 
     fun place() {
         if(game.place()) {
             game.nextMove()
         }
-        _gameStateFlow.value = game.gameState
+        emitGameState()
+    }
+
+    private fun emitGameState() = viewModelScope.launch{
+        _gameStatesFlow.emit(game.gameState)
     }
 }

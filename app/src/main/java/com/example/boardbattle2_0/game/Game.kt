@@ -1,6 +1,5 @@
 package com.example.boardbattle2_0.game
 
-import android.util.Log
 import com.example.boardbattle2_0.CELLS_HORIZONTAL
 import com.example.boardbattle2_0.CELLS_VERTICAL
 import org.jetbrains.kotlinx.multik.ndarray.data.get
