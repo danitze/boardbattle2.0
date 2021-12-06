@@ -3,6 +3,7 @@ package com.example.boardbattle2_0.game
 import com.example.boardbattle2_0.CELLS_HORIZONTAL
 import com.example.boardbattle2_0.CELLS_VERTICAL
 import com.example.boardbattle2_0.game.data.GameState
+import com.example.boardbattle2_0.game.dialog.EndGameDialogFragment
 import org.jetbrains.kotlinx.multik.ndarray.data.get
 import org.jetbrains.kotlinx.multik.ndarray.data.set
 
@@ -83,3 +84,6 @@ fun GameState.turn() {
         figureHeight = figureWidth.also { figureWidth = figureHeight }
     }
 }
+
+val EndGameDialogFragment.wonPlayerNum
+get() = arguments?.getInt(WON_PLAYER_TAG, 1)

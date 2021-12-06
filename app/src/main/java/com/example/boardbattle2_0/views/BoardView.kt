@@ -53,8 +53,8 @@ class BoardView(
                     if(canPlace) getColor(R.color.can_place_color) //TODO set normal backgrounds
                     else getColor(R.color.cannot_place_color)
                 } else when(state.board[i, j, 1]) {
-                    1 -> getColor(R.color.my_player_color)
-                    2 -> getColor(R.color.enemy_player_color)
+                    1 -> getColor(R.color.player_1_color)
+                    2 -> getColor(R.color.player_2_color)
                     else -> getColor(R.color.background_color_1)
                 }
             }

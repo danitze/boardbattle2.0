@@ -58,11 +58,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/myScoreTv"
+        android:id="@+id/player1ScoreTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:textColor="@color/my_player_color"
+        android:textColor="@color/player_1_color"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@id/controllerView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,11 +70,11 @@
         tools:text="Територія: 12 (23 %)" />
 
     <TextView
-        android:id="@+id/enemyScoreTv"
+        android:id="@+id/player2ScoreTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:textColor="@color/enemy_player_color"
+        android:textColor="@color/player_2_color"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@id/boardView"
         app:layout_constraintStart_toStartOf="parent"

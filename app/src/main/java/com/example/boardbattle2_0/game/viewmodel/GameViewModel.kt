@@ -1,17 +1,22 @@
-package com.example.boardbattle2_0.game
+package com.example.boardbattle2_0.game.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.boardbattle2_0.CELLS_HORIZONTAL
 import com.example.boardbattle2_0.CELLS_VERTICAL
+import com.example.boardbattle2_0.game.Game
 import com.example.boardbattle2_0.game.data.GameState
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import org.jetbrains.kotlinx.multik.ndarray.data.get
+import org.jetbrains.kotlinx.multik.ndarray.operations.indexOf
+import org.jetbrains.kotlinx.multik.ndarray.operations.max
 
 class GameViewModel : ViewModel() {
     private val game = Game()
-    val boardSpace = CELLS_HORIZONTAL * CELLS_VERTICAL
+    private val boardSpace = CELLS_HORIZONTAL * CELLS_VERTICAL
 
     private val _gameStatesFlow = MutableSharedFlow<GameState>()
     val gameStatesFlow: SharedFlow<GameState> = _gameStatesFlow.asSharedFlow()
@@ -77,6 +82,10 @@ class GameViewModel : ViewModel() {
 
     fun getPlayerSpacePercent(playerNum: Int): Int =
         (getPlayerSpace(playerNum).toDouble()/ boardSpace * 100).toInt()
+
+    fun getPlayerWithBiggestScore() = game.gameState.spaces.max()?.let {
+        game.gameState.spaces.indexOf(it) + 1
+    } ?: 1
 
     private fun emitGameState() = viewModelScope.launch{
         _gameStatesFlow.emit(game.gameState)

@@ -8,8 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <!--<color name="my_player_color">#add8e6</color>-->
-    <color name="my_player_color">#5eb3cf</color>
-    <color name="enemy_player_color">#a26057</color>
+    <color name="player_1_color">#5eb3cf</color>
+    <color name="player_2_color">#a26057</color>
     <color name="can_place_color">#013220</color>
     <color name="cannot_place_color">#6E001D</color>
     <color name="first_page_buttons_background">#c4c4a4</color>

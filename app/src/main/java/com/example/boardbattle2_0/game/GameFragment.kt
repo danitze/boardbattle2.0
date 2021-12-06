@@ -9,11 +9,15 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.boardbattle2_0.R
 import com.example.boardbattle2_0.game.data.GameState
+import com.example.boardbattle2_0.game.dialog.EndGameDialogFragment
+import com.example.boardbattle2_0.game.viewmodel.GameNavViewModel
+import com.example.boardbattle2_0.game.viewmodel.GameViewModel
 import com.example.boardbattle2_0.views.BoardView
 import com.example.boardbattle2_0.views.ControllerView
 import kotlinx.coroutines.flow.collect
@@ -22,6 +26,7 @@ import kotlinx.coroutines.launch
 class GameFragment : Fragment() {
 
     private val viewModel: GameViewModel by viewModels()
+    private val navViewModel: GameNavViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,12 +53,15 @@ class GameFragment : Fragment() {
 
     private fun setUpObservers(view: View) {
         val boardView = view.findViewById<BoardView>(R.id.boardView)
-        val firstPlayerTv = view.findViewById<TextView>(R.id.myScoreTv)
-        val secondPlayerTv = view.findViewById<TextView>(R.id.enemyScoreTv)
+        val firstPlayerTv = view.findViewById<TextView>(R.id.player1ScoreTv)
+        val secondPlayerTv = view.findViewById<TextView>(R.id.player2ScoreTv)
         lifecycleScope.launch {
             viewModel.gameStatesFlow.collect {
                 if(it.freeSpace == 0) {
-                    findNavController().popBackStack()
+                    val endGameDialogFragment = EndGameDialogFragment.newInstance(
+                        viewModel.getPlayerWithBiggestScore()
+                    )
+                    endGameDialogFragment.show(childFragmentManager, END_GAME_FRAGMENT)
                 }
                 boardView.setBoard(it)
                 firstPlayerTv.text = getString(
@@ -67,6 +75,14 @@ class GameFragment : Fragment() {
                     viewModel.getPlayerSpacePercent(2)
                 )
                 selectCurrentPlayer(firstPlayerTv, secondPlayerTv, state = it)
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch { //Because we're dealing with activityViewModel
+            navViewModel.navFlow.collect {
+                if(it == NAVIGATE_TO_MENU) {
+                    navViewModel.reset()
+                    findNavController().popBackStack()
+                }
             }
         }
     }

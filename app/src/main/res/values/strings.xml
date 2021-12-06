@@ -11,4 +11,6 @@
     <string name="down_btn_text">▼</string>
     <string name="turn_btn_text">↻</string>
     <string name="place_btn_text">✓</string>
+    <string name="win_message">Перемога гравця %1$d</string>
+    <string name="to_menu">в меню!</string>
 </resources>
