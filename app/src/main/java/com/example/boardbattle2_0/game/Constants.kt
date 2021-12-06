@@ -9,3 +9,4 @@ const val CONTINUE_GAME = -9
 const val WON_PLAYER_TAG = "wonPlayer"
 
 const val END_GAME_FRAGMENT = "endGameDialogFragment"
+const val LEAVE_GAME_FRAGMENT = "leaveGameDialogFragment"

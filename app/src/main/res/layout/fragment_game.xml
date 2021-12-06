@@ -42,7 +42,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@color/control_buttons_color"
-            android:text="@string/place_btn_text"
+            android:text="@string/tick"
             android:textColor="@color/dark_add_color"
             android:textSize="40sp" />
 

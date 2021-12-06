@@ -17,4 +17,6 @@
     <color name="control_buttons_color">#a7a88f</color>
     <color name="dark_add_color">#30302c</color>
     <color name="background_color_2">#67634f</color>
+    <color name="accept">#77DD77</color>
+    <color name="deny">#E66761</color>
 </resources>

@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.boardbattle2_0.R
 import com.example.boardbattle2_0.game.data.GameState
 import com.example.boardbattle2_0.game.dialog.EndGameDialogFragment
+import com.example.boardbattle2_0.game.dialog.LeaveGameDialogFragment
 import com.example.boardbattle2_0.game.viewmodel.GameNavViewModel
 import com.example.boardbattle2_0.game.viewmodel.GameViewModel
 import com.example.boardbattle2_0.views.BoardView
@@ -44,10 +45,11 @@ class GameFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val callback = object: OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                //TODO implement showing alert dialog
+                val leaveGameDialogFragment = LeaveGameDialogFragment()
+                leaveGameDialogFragment.show(childFragmentManager, LEAVE_GAME_FRAGMENT)
             }
         }
-        //requireActivity().onBackPressedDispatcher.addCallback(callback)
+        requireActivity().onBackPressedDispatcher.addCallback(callback)
         super.onCreate(savedInstanceState)
     }
 
