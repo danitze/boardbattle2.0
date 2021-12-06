@@ -14,7 +14,8 @@
         android:textColor="@color/dark_add_color"
         app:layout_constraintLeft_toRightOf="@id/leftBtn"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="up" />
+        android:textSize="35sp"
+        android:text="@string/up_btn_text" />
 
     <com.example.boardbattle2_0.views.AppButton
         android:id="@+id/downBtn"
@@ -24,7 +25,8 @@
         android:textColor="@color/dark_add_color"
         app:layout_constraintStart_toEndOf="@id/leftBtn"
         app:layout_constraintTop_toBottomOf="@id/leftBtn"
-        tools:text="down" />
+        android:textSize="35sp"
+        android:text="@string/down_btn_text" />
 
     <com.example.boardbattle2_0.views.AppButton
         android:id="@+id/leftBtn"
@@ -35,7 +37,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/upBtn"
         tools:layout_editor_absoluteY="28dp"
-        tools:text="left" />
+        android:textSize="35sp"
+        android:text="@string/left_btn_text" />
 
     <com.example.boardbattle2_0.views.AppButton
         android:id="@+id/rightBtn"
@@ -46,7 +49,8 @@
         app:layout_constraintBottom_toTopOf="@id/downBtn"
         app:layout_constraintStart_toEndOf="@+id/downBtn"
         tools:layout_editor_absoluteY="76dp"
-        tools:text="right" />
+        android:textSize="35sp"
+        android:text="@string/right_btn_text" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

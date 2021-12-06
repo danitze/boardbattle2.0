@@ -31,8 +31,9 @@
             android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:background="@color/control_buttons_color"
+            android:text="@string/turn_btn_text"
             android:textColor="@color/dark_add_color"
-            tools:text="turn" />
+            android:textSize="40sp" />
 
         <com.example.boardbattle2_0.views.AppButton
             android:id="@+id/placeBtn"
@@ -41,8 +42,9 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@color/control_buttons_color"
+            android:text="@string/place_btn_text"
             android:textColor="@color/dark_add_color"
-            tools:text="place" />
+            android:textSize="40sp" />
 
     </LinearLayout>
 

@@ -1,5 +1,6 @@
 package com.example.boardbattle2_0.game
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.boardbattle2_0.R
+import com.example.boardbattle2_0.game.data.GameState
 import com.example.boardbattle2_0.views.BoardView
 import com.example.boardbattle2_0.views.ControllerView
 import kotlinx.coroutines.flow.collect
@@ -46,22 +48,25 @@ class GameFragment : Fragment() {
 
     private fun setUpObservers(view: View) {
         val boardView = view.findViewById<BoardView>(R.id.boardView)
+        val firstPlayerTv = view.findViewById<TextView>(R.id.myScoreTv)
+        val secondPlayerTv = view.findViewById<TextView>(R.id.enemyScoreTv)
         lifecycleScope.launch {
             viewModel.gameStatesFlow.collect {
                 if(it.freeSpace == 0) {
                     findNavController().popBackStack()
                 }
                 boardView.setBoard(it)
-                view.findViewById<TextView>(R.id.myScoreTv).text = getString(
+                firstPlayerTv.text = getString(
                     R.string.game_points,
                     viewModel.getPlayerSpace(1),
                     viewModel.getPlayerSpacePercent(1)
                 )
-                view.findViewById<TextView>(R.id.enemyScoreTv).text = getString(
+                secondPlayerTv.text = getString(
                     R.string.game_points,
                     viewModel.getPlayerSpace(2),
                     viewModel.getPlayerSpacePercent(2)
                 )
+                selectCurrentPlayer(firstPlayerTv, secondPlayerTv, state = it)
             }
         }
     }
@@ -89,6 +94,13 @@ class GameFragment : Fragment() {
         view.findViewById<Button>(R.id.placeBtn).setOnClickListener {
             viewModel.place()
         }
+    }
+
+    private fun selectCurrentPlayer(vararg views: TextView, state: GameState) {
+        views.forEach {
+            it.setTypeface(null, Typeface.NORMAL)
+        }
+        views[state.playerNum - 1].setTypeface(null, Typeface.BOLD)
     }
 
 }
