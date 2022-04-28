@@ -10,6 +10,10 @@ class AppButton @JvmOverloads constructor(
     attrs: AttributeSet? = null
 ) : androidx.appcompat.widget.AppCompatButton(context, attrs) {
 
+    init {
+        isSoundEffectsEnabled = false
+    }
+
     private val mediaPlayer = MediaPlayer.create(context, R.raw.click)
 
     override fun performClick(): Boolean {
