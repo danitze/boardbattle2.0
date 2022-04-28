@@ -55,6 +55,11 @@ class GameFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+    override fun onStop() {
+        super.onStop()
+        viewModel.saveGameState()
+    }
+
     private fun setUpObservers(view: View) {
         val boardView = view.findViewById<BoardView>(R.id.boardView)
         val firstPlayerTv = view.findViewById<TextView>(R.id.player1ScoreTv)

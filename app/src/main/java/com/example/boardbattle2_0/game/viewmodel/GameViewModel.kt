@@ -16,10 +16,14 @@ class GameViewModel @Inject constructor(
     private val boardSpace = CELLS_HORIZONTAL * CELLS_VERTICAL
 
     val gameStatesFlow = repo.gameStatesFlow
+    private val savedGameStateFlow = repo.savedGameStateFlow
 
     init {
         viewModelScope.launch {
-            repo.nextMove()
+            savedGameStateFlow.collect { gameState ->
+                repo.gameState = gameState
+                repo.nextMove()
+            }
         }
     }
 
@@ -69,4 +73,8 @@ class GameViewModel @Inject constructor(
         (getPlayerSpace(playerNum).toDouble()/ boardSpace * 100).toInt()
 
     fun getPlayerWithBiggestScore() = repo.getPlayerWithBiggestScore()
+
+    fun saveGameState() = viewModelScope.launch {
+        repo.saveGameState(repo.gameState)
+    }
 }

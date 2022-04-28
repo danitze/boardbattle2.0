@@ -1,12 +1,22 @@
 package com.example.boardbattle2_0.repo
 
 import com.example.boardbattle2_0.game.GameService
+import com.example.boardbattle2_0.game.data.GameState
+import com.example.boardbattle2_0.storage.GameDataStoreService
 import javax.inject.Inject
 
 class AppRepo @Inject constructor(
-    private val gameService: GameService
+    private val gameService: GameService,
+    private val gameDataStoreService: GameDataStoreService
 ) {
     val gameStatesFlow = gameService.gameStatesFlow
+    val savedGameStateFlow = gameDataStoreService.savedGameStateFlow
+
+    var gameState
+    get() = gameService.gameState
+    set(value) {
+        gameService.gameState = value
+    }
 
     suspend fun moveRight() = gameService.moveRight()
 
@@ -29,6 +39,8 @@ class AppRepo @Inject constructor(
     suspend fun turn() = gameService.turn()
 
     suspend fun place() = gameService.place()
+
+    suspend fun saveGameState(gameState: GameState) = gameDataStoreService.saveGameState(gameState)
 
     fun getPlayerSpace(playerNum: Int) = gameService.getPlayerSpace(playerNum)
 

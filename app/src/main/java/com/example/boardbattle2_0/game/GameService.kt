@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.asSharedFlow
 import javax.inject.Inject
 
 @Suppress("ControlFlowWithEmptyBody")
-class GameService @Inject constructor(
-    private val gameState: GameState
-) {
+class GameService @Inject constructor() {
+
+    lateinit var gameState: GameState
 
     private val _gameStatesFlow = MutableSharedFlow<GameState>()
     val gameStatesFlow: SharedFlow<GameState> = _gameStatesFlow.asSharedFlow()
