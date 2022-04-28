@@ -21,9 +21,11 @@ import com.example.boardbattle2_0.game.viewmodel.GameNavViewModel
 import com.example.boardbattle2_0.game.viewmodel.GameViewModel
 import com.example.boardbattle2_0.views.BoardView
 import com.example.boardbattle2_0.views.ControllerView
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class GameFragment : Fragment() {
 
     private val viewModel: GameViewModel by viewModels()

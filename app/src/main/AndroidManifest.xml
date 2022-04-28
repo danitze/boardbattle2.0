@@ -3,7 +3,7 @@
     package="com.example.boardbattle2_0">
 
     <application
-        android:name=".BoardBattleApplication"
+        android:name=".app.BoardBattleApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

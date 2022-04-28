@@ -10,9 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.boardbattle2_0.R
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
+@AndroidEntryPoint
 class MenuFragment : Fragment() {
+
     private val viewModel: MenuViewModel by viewModels()
 
     override fun onCreateView(

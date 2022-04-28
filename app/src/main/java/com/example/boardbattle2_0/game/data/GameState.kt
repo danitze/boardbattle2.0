@@ -7,7 +7,7 @@ import org.jetbrains.kotlinx.multik.api.zeros
 import org.jetbrains.kotlinx.multik.ndarray.data.D1Array
 import org.jetbrains.kotlinx.multik.ndarray.data.D3Array
 
-data class GameState(
+data class GameState (
     //board[i, j, 0] - це поточний хід гравця, board[i, j, 1] - це доска з встановленими на попередніх ходах фігурами
     val board: D3Array<Int> = mk.zeros(CELLS_VERTICAL, CELLS_HORIZONTAL, 2),
     val spaces: D1Array<Int> = mk.zeros(2),
