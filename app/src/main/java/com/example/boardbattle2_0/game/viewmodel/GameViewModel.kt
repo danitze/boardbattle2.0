@@ -4,17 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.boardbattle2_0.CELLS_HORIZONTAL
 import com.example.boardbattle2_0.CELLS_VERTICAL
-import com.example.boardbattle2_0.game.GameService
-import com.example.boardbattle2_0.game.data.GameState
 import com.example.boardbattle2_0.repo.AppRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
-import org.jetbrains.kotlinx.multik.ndarray.data.get
-import org.jetbrains.kotlinx.multik.ndarray.operations.indexOf
-import org.jetbrains.kotlinx.multik.ndarray.operations.max
 import javax.inject.Inject
 
 @HiltViewModel

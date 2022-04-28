@@ -6,10 +6,6 @@ import com.example.boardbattle2_0.game.data.GameState
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import org.jetbrains.kotlinx.multik.ndarray.data.get
-import org.jetbrains.kotlinx.multik.ndarray.data.set
-import org.jetbrains.kotlinx.multik.ndarray.operations.indexOf
-import org.jetbrains.kotlinx.multik.ndarray.operations.max
 import javax.inject.Inject
 
 @Suppress("ControlFlowWithEmptyBody")
@@ -91,8 +87,8 @@ class GameService @Inject constructor(
         if(canPlace()) {
             for (i in yPos until yPos + figureHeight) {
                 for (j in xPos until xPos + figureWidth) {
-                    board[i, j, 1] = board[i, j, 0]
-                    board[i, j, 0] = 0
+                    board[i][j][1] = board[i][j][0]
+                    board[i][j][0] = 0
                 }
             }
             val figureSpace = figureWidth * figureHeight
@@ -108,7 +104,7 @@ class GameService @Inject constructor(
 
     fun getPlayerSpace(playerNum: Int) = gameState.spaces[playerNum - 1]
 
-    fun getPlayerWithBiggestScore() = gameState.spaces.max()?.let {
+    fun getPlayerWithBiggestScore() = gameState.spaces.maxOrNull()?.let {
         gameState.spaces.indexOf(it) + 1
     } ?: 1
 

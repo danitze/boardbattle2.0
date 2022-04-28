@@ -8,7 +8,6 @@ import android.widget.LinearLayout
 import com.example.boardbattle2_0.*
 import com.example.boardbattle2_0.game.data.GameState
 import com.example.boardbattle2_0.game.canPlace
-import org.jetbrains.kotlinx.multik.ndarray.data.get
 
 class BoardView(
     context: Context,
@@ -49,10 +48,10 @@ class BoardView(
         val canPlace = state.canPlace()
         for(i in cells.indices) {
             for(j in cells[i].indices) {
-                cells[i][j]?.background = if(state.board[i, j, 0] != 0) {
+                cells[i][j]?.background = if(state.board[i][j][0] != 0) {
                     if(canPlace) getColor(R.color.can_place_color) //TODO set normal backgrounds
                     else getColor(R.color.cannot_place_color)
-                } else when(state.board[i, j, 1]) {
+                } else when(state.board[i][j][1]) {
                     1 -> getColor(R.color.player_1_color)
                     2 -> getColor(R.color.player_2_color)
                     else -> getColor(R.color.background_color_1)

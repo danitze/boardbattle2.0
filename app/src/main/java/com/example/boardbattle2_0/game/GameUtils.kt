@@ -4,8 +4,6 @@ import com.example.boardbattle2_0.CELLS_HORIZONTAL
 import com.example.boardbattle2_0.CELLS_VERTICAL
 import com.example.boardbattle2_0.game.data.GameState
 import com.example.boardbattle2_0.game.dialog.EndGameDialogFragment
-import org.jetbrains.kotlinx.multik.ndarray.data.get
-import org.jetbrains.kotlinx.multik.ndarray.data.set
 
 fun GameState.clearActiveFigure() = fillActiveMoveFigureWith(0)
 
@@ -14,7 +12,7 @@ fun GameState.resetActiveFigure() = fillActiveMoveFigureWith(playerNum)
 fun GameState.fillActiveMoveFigureWith(number: Int) {
     for(i in yPos until yPos + figureHeight) {
         for (j in xPos until xPos + figureWidth) {
-            board[i, j, 0] = number
+            board[i][j][0] = number
         }
     }
 }
@@ -23,7 +21,7 @@ fun GameState.canPlace(): Boolean {
     //Перевірка чи не перетинає наша форма переміщену фігуру
     for(i in yPos until yPos + figureHeight) {
         for (j in xPos until xPos + figureWidth) {
-            if(board[i, j, 1] != 0) {
+            if(board[i][j][1] != 0) {
                 return false
             }
         }
@@ -45,7 +43,7 @@ fun GameState.canPlace(): Boolean {
     //Перевірка по краях згори і знизу фігури
     if(yPos > 0) {
         for(i in xPos until xPos + figureWidth) {
-            if(board[yPos - 1, i, 1] == playerNum) {
+            if(board[yPos - 1][i][1] == playerNum) {
                 return true
             }
         }
@@ -53,7 +51,7 @@ fun GameState.canPlace(): Boolean {
 
     if(yPos + figureHeight < CELLS_VERTICAL) {
         for(i in xPos until xPos + figureWidth) {
-            if(board[yPos + figureHeight, i, 1] == playerNum) {
+            if(board[yPos + figureHeight][i][1] == playerNum) {
                 return true
             }
         }
@@ -62,7 +60,7 @@ fun GameState.canPlace(): Boolean {
     //Перевірка по краях зліва і справа фігури
     if(xPos > 0) {
         for(i in yPos until yPos + figureHeight) {
-            if(board[i, xPos - 1, 1] == playerNum) {
+            if(board[i][xPos - 1][1] == playerNum) {
                 return true
             }
         }
@@ -70,7 +68,7 @@ fun GameState.canPlace(): Boolean {
 
     if(xPos + figureWidth < CELLS_HORIZONTAL) {
         for(i in yPos until yPos + figureHeight) {
-            if(board[i, xPos + figureWidth, 1] == playerNum) {
+            if(board[i][xPos + figureWidth][1] == playerNum) {
                 return true
             }
         }
