@@ -7,7 +7,6 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.example.boardbattle2_0.*
 import com.example.boardbattle2_0.game.data.GameState
-import com.example.boardbattle2_0.game.canPlace
 
 class BoardView(
     context: Context,

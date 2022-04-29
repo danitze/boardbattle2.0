@@ -19,6 +19,9 @@ class EndGameDialogFragment : DialogFragment() {
 
     private val navViewModel: NavViewModel by navGraphViewModels(R.id.main_nav)
 
+    private val wonPlayerNum
+    get() = arguments?.getInt(WON_PLAYER_TAG, 1)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
