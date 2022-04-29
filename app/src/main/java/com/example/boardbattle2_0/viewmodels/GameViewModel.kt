@@ -83,11 +83,19 @@ class GameViewModel @Inject constructor(
 
     fun getPlayerWithBiggestScore() = repo.getPlayerWithBiggestScore()
 
-    fun saveGameState() {
+    fun onGameExit() {
+        if(repo.isBoardFilled()) {
+            clearGameState()
+        } else {
+            saveGameState()
+        }
+    }
+
+    private fun saveGameState() {
         workManager.enqueue(saverWorkerWorkRequest)
     }
 
-    fun clearGameState() {
+    private fun clearGameState() {
         workManager.enqueue(clearerWorkerWorkRequest)
     }
 }

@@ -121,6 +121,8 @@ class GameService @Inject constructor() {
         }
     }
 
+    fun isBoardFilled() = gameState.freeSpace == 0
+
     private fun actionRight() = with(gameState) {
         if (xPos + figureWidth < CELLS_HORIZONTAL) {
             clearActiveFigure()

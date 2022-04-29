@@ -59,7 +59,7 @@ class GameFragment : Fragment() {
 
     override fun onStop() {
         super.onStop()
-        viewModel.saveGameState()
+        viewModel.onGameExit()
     }
 
     private fun setUpObservers(view: View) {

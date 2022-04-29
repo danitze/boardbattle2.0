@@ -48,4 +48,6 @@ class AppRepo @Inject constructor(
     fun getPlayerSpace(playerNum: Int) = gameService.getPlayerSpace(playerNum)
 
     fun getPlayerWithBiggestScore() = gameService.getPlayerWithBiggestScore()
+
+    fun isBoardFilled() = gameService.isBoardFilled()
 }
