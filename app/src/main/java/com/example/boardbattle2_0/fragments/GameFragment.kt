@@ -88,7 +88,7 @@ class GameFragment : Fragment() {
                 selectCurrentPlayer(firstPlayerTv, secondPlayerTv, state = it)
             }
         }
-        viewLifecycleOwner.lifecycleScope.launch { //Because we're dealing with activityViewModel
+        viewLifecycleOwner.lifecycleScope.launch {
             navViewModel.navFlow.collect {
                 if(it == TO_MENU) {
                     navViewModel.reset()

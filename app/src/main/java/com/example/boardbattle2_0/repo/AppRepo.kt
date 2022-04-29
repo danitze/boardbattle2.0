@@ -14,11 +14,8 @@ class AppRepo @Inject constructor(
     val gameStatesFlow = gameService.gameStatesFlow
     val savedGameStateFlow = gameDataStoreService.savedGameStateFlow
 
-    var gameState
+    val gameState
     get() = gameService.gameState
-    set(value) {
-        gameService.gameState = value
-    }
 
     suspend fun moveRight() = gameService.moveRight()
 
@@ -42,7 +39,11 @@ class AppRepo @Inject constructor(
 
     suspend fun place() = gameService.place()
 
+    suspend fun uploadGameState(gameState: GameState) = gameService.uploadGameState(gameState)
+
     suspend fun saveGameState(gameState: GameState) = gameDataStoreService.saveGameState(gameState)
+
+    suspend fun clearGameState() = gameDataStoreService.clearGameState()
 
     fun getPlayerSpace(playerNum: Int) = gameService.getPlayerSpace(playerNum)
 

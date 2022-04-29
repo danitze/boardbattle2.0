@@ -31,10 +31,15 @@ class GameDataStoreService @Inject constructor(
     }
 
     suspend fun saveGameState(gameState: GameState) {
-        gameState.clearActiveFigure()
         val jsonString = gson.toJson(gameState)
         context.dataStore.edit { prefs ->
             prefs[GAME_STATE_KEY] = jsonString
+        }
+    }
+
+    suspend fun clearGameState() {
+        context.dataStore.edit { prefs ->
+            prefs.remove(GAME_STATE_KEY)
         }
     }
 

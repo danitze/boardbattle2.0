@@ -6,16 +6,22 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import com.example.boardbattle2_0.CELLS_HORIZONTAL
 import com.example.boardbattle2_0.CELLS_VERTICAL
+import com.example.boardbattle2_0.CLEARER_WORKER_KEY
+import com.example.boardbattle2_0.SAVER_WORKER_KEY
 import com.example.boardbattle2_0.repo.AppRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import javax.inject.Named
 
 @HiltViewModel
 class GameViewModel @Inject constructor(
     private val repo: AppRepo,
     private val workManager: WorkManager,
-    private val saverWorkerWorkRequest: OneTimeWorkRequest
+    @Named(SAVER_WORKER_KEY)
+    private val saverWorkerWorkRequest: OneTimeWorkRequest,
+    @Named(CLEARER_WORKER_KEY)
+    private val clearerWorkerWorkRequest: OneTimeWorkRequest
 ) : ViewModel() {
     private val boardSpace = CELLS_HORIZONTAL * CELLS_VERTICAL
 
@@ -25,8 +31,7 @@ class GameViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             savedGameStateFlow.collect { gameState ->
-                repo.gameState = gameState
-                repo.nextMove()
+                repo.uploadGameState(gameState)
             }
         }
     }
@@ -80,5 +85,9 @@ class GameViewModel @Inject constructor(
 
     fun saveGameState() {
         workManager.enqueue(saverWorkerWorkRequest)
+    }
+
+    fun clearGameState() {
+        workManager.enqueue(clearerWorkerWorkRequest)
     }
 }

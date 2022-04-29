@@ -112,6 +112,15 @@ class GameService @Inject constructor() {
         gameState.spaces.indexOf(it) + 1
     } ?: 1
 
+    suspend fun uploadGameState(gameState: GameState) {
+        this.gameState = gameState
+        if(gameState == GameState()) {
+            nextMove()
+        } else {
+            emitGameState()
+        }
+    }
+
     private fun actionRight() = with(gameState) {
         if (xPos + figureWidth < CELLS_HORIZONTAL) {
             clearActiveFigure()
