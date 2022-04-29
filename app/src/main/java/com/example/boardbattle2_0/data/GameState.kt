@@ -1,7 +1,7 @@
 package com.example.boardbattle2_0.data
 
-import com.example.boardbattle2_0.CELLS_HORIZONTAL
-import com.example.boardbattle2_0.CELLS_VERTICAL
+import com.example.boardbattle2_0.utils.CELLS_HORIZONTAL
+import com.example.boardbattle2_0.utils.CELLS_VERTICAL
 import com.example.boardbattle2_0.utils.PLAYERS_COUNT
 
 data class GameState (

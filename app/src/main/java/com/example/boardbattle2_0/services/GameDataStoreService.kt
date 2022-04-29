@@ -6,7 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.example.boardbattle2_0.GAME_DATA_STORE
+import com.example.boardbattle2_0.utils.GAME_DATA_STORE
 import com.example.boardbattle2_0.data.GameState
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext

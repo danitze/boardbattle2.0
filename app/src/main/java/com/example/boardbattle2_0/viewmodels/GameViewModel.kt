@@ -4,10 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
-import com.example.boardbattle2_0.CELLS_HORIZONTAL
-import com.example.boardbattle2_0.CELLS_VERTICAL
-import com.example.boardbattle2_0.CLEARER_WORKER_KEY
-import com.example.boardbattle2_0.SAVER_WORKER_KEY
+import com.example.boardbattle2_0.utils.CELLS_HORIZONTAL
+import com.example.boardbattle2_0.utils.CELLS_VERTICAL
+import com.example.boardbattle2_0.utils.CLEARER_WORKER_KEY
+import com.example.boardbattle2_0.utils.SAVER_WORKER_KEY
 import com.example.boardbattle2_0.repo.AppRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

@@ -3,8 +3,8 @@ package com.example.boardbattle2_0.app
 import android.content.Context
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.example.boardbattle2_0.CLEARER_WORKER_KEY
-import com.example.boardbattle2_0.SAVER_WORKER_KEY
+import com.example.boardbattle2_0.utils.CLEARER_WORKER_KEY
+import com.example.boardbattle2_0.utils.SAVER_WORKER_KEY
 import com.example.boardbattle2_0.workers.ClearerWorker
 import com.example.boardbattle2_0.workers.SaverWorker
 import com.google.gson.Gson
