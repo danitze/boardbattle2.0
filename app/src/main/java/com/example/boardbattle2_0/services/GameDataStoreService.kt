@@ -1,4 +1,4 @@
-package com.example.boardbattle2_0.storage
+package com.example.boardbattle2_0.services
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -7,7 +7,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.boardbattle2_0.GAME_DATA_STORE
-import com.example.boardbattle2_0.game.data.GameState
+import com.example.boardbattle2_0.data.GameState
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow

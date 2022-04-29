@@ -1,4 +1,4 @@
-package com.example.boardbattle2_0.game.dialog
+package com.example.boardbattle2_0.fragments.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,10 +10,10 @@ import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.navGraphViewModels
-import com.example.boardbattle2_0.NavViewModel
+import com.example.boardbattle2_0.viewmodels.NavViewModel
 import com.example.boardbattle2_0.R
-import com.example.boardbattle2_0.game.*
-import com.example.boardbattle2_0.menu.TO_MENU
+import com.example.boardbattle2_0.utils.TO_MENU
+import com.example.boardbattle2_0.utils.WON_PLAYER_TAG
 
 class EndGameDialogFragment : DialogFragment() {
 

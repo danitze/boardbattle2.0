@@ -1,4 +1,4 @@
-package com.example.boardbattle2_0.game
+package com.example.boardbattle2_0.fragments
 
 import android.graphics.Typeface
 import android.os.Bundle
@@ -13,13 +13,15 @@ import androidx.fragment.app.viewModels
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.boardbattle2_0.NavViewModel
+import com.example.boardbattle2_0.viewmodels.NavViewModel
 import com.example.boardbattle2_0.R
-import com.example.boardbattle2_0.game.data.GameState
-import com.example.boardbattle2_0.game.dialog.EndGameDialogFragment
-import com.example.boardbattle2_0.game.dialog.LeaveGameDialogFragment
-import com.example.boardbattle2_0.game.viewmodel.GameViewModel
-import com.example.boardbattle2_0.menu.TO_MENU
+import com.example.boardbattle2_0.utils.END_GAME_FRAGMENT
+import com.example.boardbattle2_0.utils.LEAVE_GAME_FRAGMENT
+import com.example.boardbattle2_0.data.GameState
+import com.example.boardbattle2_0.fragments.dialog.EndGameDialogFragment
+import com.example.boardbattle2_0.fragments.dialog.LeaveGameDialogFragment
+import com.example.boardbattle2_0.viewmodels.GameViewModel
+import com.example.boardbattle2_0.utils.TO_MENU
 import com.example.boardbattle2_0.views.BoardView
 import com.example.boardbattle2_0.views.ControllerView
 import dagger.hilt.android.AndroidEntryPoint

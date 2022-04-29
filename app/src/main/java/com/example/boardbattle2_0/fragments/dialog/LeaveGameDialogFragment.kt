@@ -1,4 +1,4 @@
-package com.example.boardbattle2_0.game.dialog
+package com.example.boardbattle2_0.fragments.dialog
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.DialogFragment
 import androidx.navigation.navGraphViewModels
-import com.example.boardbattle2_0.NavViewModel
+import com.example.boardbattle2_0.viewmodels.NavViewModel
 import com.example.boardbattle2_0.R
-import com.example.boardbattle2_0.menu.TO_MENU
+import com.example.boardbattle2_0.utils.TO_MENU
 
 class LeaveGameDialogFragment : DialogFragment() {
 

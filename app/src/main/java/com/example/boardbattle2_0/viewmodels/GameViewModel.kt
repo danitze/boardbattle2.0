@@ -1,4 +1,4 @@
-package com.example.boardbattle2_0.game.viewmodel
+package com.example.boardbattle2_0.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

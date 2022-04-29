@@ -6,7 +6,7 @@
     app:startDestination="@id/menuFragment">
     <fragment
         android:id="@+id/menuFragment"
-        android:name="com.example.boardbattle2_0.menu.MenuFragment"
+        android:name="com.example.boardbattle2_0.fragments.MenuFragment"
         android:label="fragment_menu"
         tools:layout="@layout/fragment_menu" >
         <action
@@ -18,12 +18,12 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.boardbattle2_0.settings.SettingsFragment"
+        android:name="com.example.boardbattle2_0.fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.example.boardbattle2_0.game.GameFragment"
+        android:name="com.example.boardbattle2_0.fragments.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" />
 </navigation>

@@ -1,8 +1,8 @@
-package com.example.boardbattle2_0.game.data
+package com.example.boardbattle2_0.data
 
 import com.example.boardbattle2_0.CELLS_HORIZONTAL
 import com.example.boardbattle2_0.CELLS_VERTICAL
-import com.example.boardbattle2_0.game.PLAYERS_COUNT
+import com.example.boardbattle2_0.utils.PLAYERS_COUNT
 
 data class GameState (
     //board[i, j, 0] - це поточний хід гравця, board[i, j, 1] - це доска з встановленими на попередніх ходах фігурами

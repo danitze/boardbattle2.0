@@ -1,8 +1,8 @@
 package com.example.boardbattle2_0.repo
 
-import com.example.boardbattle2_0.game.GameService
-import com.example.boardbattle2_0.game.data.GameState
-import com.example.boardbattle2_0.storage.GameDataStoreService
+import com.example.boardbattle2_0.services.GameService
+import com.example.boardbattle2_0.data.GameState
+import com.example.boardbattle2_0.services.GameDataStoreService
 import javax.inject.Inject
 import javax.inject.Singleton
 

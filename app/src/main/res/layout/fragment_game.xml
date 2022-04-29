@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color_2"
-    tools:context=".game.GameFragment">
+    tools:context=".fragments.GameFragment">
 
     <com.example.boardbattle2_0.views.ControllerView
         android:id="@+id/controllerView"

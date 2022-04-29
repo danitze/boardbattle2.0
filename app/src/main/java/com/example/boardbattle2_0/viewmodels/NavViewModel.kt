@@ -1,8 +1,8 @@
-package com.example.boardbattle2_0
+package com.example.boardbattle2_0.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.example.boardbattle2_0.menu.NO_ACTION
+import com.example.boardbattle2_0.utils.NO_ACTION
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

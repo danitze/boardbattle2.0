@@ -1,4 +1,4 @@
-package com.example.boardbattle2_0.menu
+package com.example.boardbattle2_0.utils
 
 const val NO_ACTION = 0
 const val TO_GAME = 1

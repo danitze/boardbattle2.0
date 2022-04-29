@@ -1,8 +1,10 @@
-package com.example.boardbattle2_0.game
+package com.example.boardbattle2_0.services
 
 import com.example.boardbattle2_0.CELLS_HORIZONTAL
 import com.example.boardbattle2_0.CELLS_VERTICAL
-import com.example.boardbattle2_0.game.data.GameState
+import com.example.boardbattle2_0.utils.MAX_FIGURE_SIZE
+import com.example.boardbattle2_0.utils.PLAYERS_COUNT
+import com.example.boardbattle2_0.data.GameState
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow

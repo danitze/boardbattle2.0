@@ -1,9 +1,8 @@
-package com.example.boardbattle2_0
+package com.example.boardbattle2_0.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.navigation.findNavController
+import com.example.boardbattle2_0.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

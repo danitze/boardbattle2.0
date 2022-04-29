@@ -1,4 +1,4 @@
-package com.example.boardbattle2_0.settings
+package com.example.boardbattle2_0.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

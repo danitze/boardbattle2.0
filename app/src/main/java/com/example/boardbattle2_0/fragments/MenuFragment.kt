@@ -1,4 +1,4 @@
-package com.example.boardbattle2_0.menu
+package com.example.boardbattle2_0.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.boardbattle2_0.NavViewModel
+import com.example.boardbattle2_0.viewmodels.NavViewModel
 import com.example.boardbattle2_0.R
+import com.example.boardbattle2_0.utils.TO_EXIT
+import com.example.boardbattle2_0.utils.TO_GAME
+import com.example.boardbattle2_0.utils.TO_SETTINGS
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

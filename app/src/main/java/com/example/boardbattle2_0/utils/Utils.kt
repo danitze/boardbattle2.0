@@ -1,4 +1,4 @@
-package com.example.boardbattle2_0
+package com.example.boardbattle2_0.utils
 
 import android.content.Context
 import android.view.View
