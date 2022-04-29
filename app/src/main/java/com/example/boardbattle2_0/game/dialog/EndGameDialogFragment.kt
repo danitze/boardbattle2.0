@@ -9,14 +9,15 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.activityViewModels
+import androidx.navigation.navGraphViewModels
+import com.example.boardbattle2_0.NavViewModel
 import com.example.boardbattle2_0.R
 import com.example.boardbattle2_0.game.*
-import com.example.boardbattle2_0.game.viewmodel.GameNavViewModel
+import com.example.boardbattle2_0.menu.TO_MENU
 
 class EndGameDialogFragment : DialogFragment() {
 
-    private val navViewModel: GameNavViewModel by activityViewModels()
+    private val navViewModel: NavViewModel by navGraphViewModels(R.id.main_nav)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,7 +47,7 @@ class EndGameDialogFragment : DialogFragment() {
 
     private fun setUpControllers(view: View) {
         view.findViewById<Button>(R.id.toMenuBtn).setOnClickListener {
-            navViewModel.navToMenu()
+            navViewModel.navigate(TO_MENU)
             dismiss()
         }
     }

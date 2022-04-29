@@ -6,17 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.boardbattle2_0.NavViewModel
 import com.example.boardbattle2_0.R
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class MenuFragment : Fragment() {
 
-    private val viewModel: MenuViewModel by viewModels()
+    private val viewModel: NavViewModel by hiltNavGraphViewModels(R.id.main_nav)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

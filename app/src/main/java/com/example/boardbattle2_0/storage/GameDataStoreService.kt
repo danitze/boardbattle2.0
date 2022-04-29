@@ -14,7 +14,9 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class GameDataStoreService @Inject constructor(
     @ApplicationContext private val context: Context,
     private val gson: Gson

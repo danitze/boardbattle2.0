@@ -1,7 +1,8 @@
-package com.example.boardbattle2_0.menu
+package com.example.boardbattle2_0
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import com.example.boardbattle2_0.menu.NO_ACTION
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -9,7 +10,7 @@ import kotlinx.coroutines.flow.filterNotNull
 import javax.inject.Inject
 
 @HiltViewModel
-class MenuViewModel @Inject constructor(application: Application): AndroidViewModel(application) {
+class NavViewModel @Inject constructor(application: Application): AndroidViewModel(application) {
     private val _navFlow = MutableStateFlow(NO_ACTION)
     val navFlow = _navFlow.asStateFlow().filterNotNull()
 

@@ -9,27 +9,27 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.boardbattle2_0.NavViewModel
 import com.example.boardbattle2_0.R
 import com.example.boardbattle2_0.game.data.GameState
 import com.example.boardbattle2_0.game.dialog.EndGameDialogFragment
 import com.example.boardbattle2_0.game.dialog.LeaveGameDialogFragment
-import com.example.boardbattle2_0.game.viewmodel.GameNavViewModel
 import com.example.boardbattle2_0.game.viewmodel.GameViewModel
+import com.example.boardbattle2_0.menu.TO_MENU
 import com.example.boardbattle2_0.views.BoardView
 import com.example.boardbattle2_0.views.ControllerView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class GameFragment : Fragment() {
 
     private val viewModel: GameViewModel by viewModels()
-    private val navViewModel: GameNavViewModel by activityViewModels()
+    private val navViewModel: NavViewModel by hiltNavGraphViewModels(R.id.main_nav)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -88,7 +88,7 @@ class GameFragment : Fragment() {
         }
         viewLifecycleOwner.lifecycleScope.launch { //Because we're dealing with activityViewModel
             navViewModel.navFlow.collect {
-                if(it == NAVIGATE_TO_MENU) {
+                if(it == TO_MENU) {
                     navViewModel.reset()
                     findNavController().popBackStack()
                 }

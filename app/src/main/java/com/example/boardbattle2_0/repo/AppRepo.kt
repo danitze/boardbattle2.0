@@ -4,7 +4,9 @@ import com.example.boardbattle2_0.game.GameService
 import com.example.boardbattle2_0.game.data.GameState
 import com.example.boardbattle2_0.storage.GameDataStoreService
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class AppRepo @Inject constructor(
     private val gameService: GameService,
     private val gameDataStoreService: GameDataStoreService

@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.activityViewModels
+import androidx.navigation.navGraphViewModels
+import com.example.boardbattle2_0.NavViewModel
 import com.example.boardbattle2_0.R
-import com.example.boardbattle2_0.game.viewmodel.GameNavViewModel
+import com.example.boardbattle2_0.menu.TO_MENU
 
 class LeaveGameDialogFragment : DialogFragment() {
 
-    private val gameNavViewModel: GameNavViewModel by activityViewModels()
+    private val viewModel: NavViewModel by navGraphViewModels(R.id.main_nav)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +28,7 @@ class LeaveGameDialogFragment : DialogFragment() {
 
     private fun setUpControllers(view: View) {
         view.findViewById<Button>(R.id.acceptBtn).setOnClickListener {
-            gameNavViewModel.navToMenu()
+            viewModel.navigate(TO_MENU)
             dismiss()
         }
         view.findViewById<Button>(R.id.denyBtn).setOnClickListener {
