@@ -2,6 +2,8 @@ package com.example.boardbattle2_0.game.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.example.boardbattle2_0.CELLS_HORIZONTAL
 import com.example.boardbattle2_0.CELLS_VERTICAL
 import com.example.boardbattle2_0.repo.AppRepo
@@ -11,7 +13,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GameViewModel @Inject constructor(
-    private val repo: AppRepo
+    private val repo: AppRepo,
+    private val workManager: WorkManager,
+    private val saverWorkerWorkRequest: OneTimeWorkRequest
 ) : ViewModel() {
     private val boardSpace = CELLS_HORIZONTAL * CELLS_VERTICAL
 
@@ -74,7 +78,7 @@ class GameViewModel @Inject constructor(
 
     fun getPlayerWithBiggestScore() = repo.getPlayerWithBiggestScore()
 
-    fun saveGameState() = viewModelScope.launch {
-        repo.saveGameState(repo.gameState)
+    fun saveGameState() {
+        workManager.enqueue(saverWorkerWorkRequest)
     }
 }
