@@ -1,14 +1,13 @@
 package com.example.boardbattle2_0.viewmodels
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
-import com.example.boardbattle2_0.utils.CELLS_HORIZONTAL
-import com.example.boardbattle2_0.utils.CELLS_VERTICAL
-import com.example.boardbattle2_0.utils.CLEARER_WORKER_KEY
-import com.example.boardbattle2_0.utils.SAVER_WORKER_KEY
+import com.example.boardbattle2_0.data.GameState
 import com.example.boardbattle2_0.repo.AppRepo
+import com.example.boardbattle2_0.utils.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,6 +17,7 @@ import javax.inject.Named
 class GameViewModel @Inject constructor(
     private val repo: AppRepo,
     private val workManager: WorkManager,
+    private val handle: SavedStateHandle,
     @Named(SAVER_WORKER_KEY)
     private val saverWorkerWorkRequest: OneTimeWorkRequest,
     @Named(CLEARER_WORKER_KEY)
@@ -31,7 +31,14 @@ class GameViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             savedGameStateFlow.collect { gameState ->
-                repo.uploadGameState(gameState)
+                handle.get<Boolean>(CONTINUE_GAME_KEY)?.let { continueGame ->
+                    if(continueGame) {
+                        repo.uploadGameState(gameState)
+                    } else {
+                        repo.uploadGameState(GameState())
+                        clearGameState()
+                    }
+                } ?: repo.uploadGameState(gameState)
             }
         }
     }

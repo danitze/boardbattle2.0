@@ -15,4 +15,7 @@
     <string name="win_message">Перемога гравця %1$d</string>
     <string name="to_menu">в меню!</string>
     <string name="end_game_question">Закінчити гру?</string>
+    <string name="continue_game_question">Бажаєте продовжити незакінчену гру?</string>
+    <string name="accept">Так</string>
+    <string name="deny">Ні</string>
 </resources>

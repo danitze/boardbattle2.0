@@ -75,18 +75,6 @@ class GameService @Inject constructor() {
         emitGameState()
     }
 
-    suspend fun nextMove() = with(gameState) {
-        do {
-            playerNum = (playerNum % PLAYERS_COUNT) + 1
-            figureWidth = (1..MAX_FIGURE_SIZE).random()
-            figureHeight = (1..MAX_FIGURE_SIZE).random()
-            xPos = if (playerNum == 1) CELLS_HORIZONTAL - figureWidth else 0
-            yPos = if (playerNum == 1) CELLS_VERTICAL - gameState.figureHeight else 0
-        } while (!isPlaceForFigure())
-        resetActiveFigure()
-        emitGameState()
-    }
-
     suspend fun place() = with(gameState) {
         if(canPlace()) {
             for (i in yPos until yPos + figureHeight) {
@@ -122,6 +110,18 @@ class GameService @Inject constructor() {
     }
 
     fun isBoardFilled() = gameState.freeSpace == 0
+
+    private suspend fun nextMove() = with(gameState) {
+        do {
+            playerNum = (playerNum % PLAYERS_COUNT) + 1
+            figureWidth = (1..MAX_FIGURE_SIZE).random()
+            figureHeight = (1..MAX_FIGURE_SIZE).random()
+            xPos = if (playerNum == 1) CELLS_HORIZONTAL - figureWidth else 0
+            yPos = if (playerNum == 1) CELLS_VERTICAL - gameState.figureHeight else 0
+        } while (!isPlaceForFigure())
+        resetActiveFigure()
+        emitGameState()
+    }
 
     private fun actionRight() = with(gameState) {
         if (xPos + figureWidth < CELLS_HORIZONTAL) {

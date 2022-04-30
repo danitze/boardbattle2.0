@@ -33,8 +33,6 @@ class AppRepo @Inject constructor(
 
     suspend fun moveDownTillEnd() = gameService.moveDownTillEnd()
 
-    suspend fun nextMove() = gameService.nextMove()
-
     suspend fun turn() = gameService.turn()
 
     suspend fun place() = gameService.place()

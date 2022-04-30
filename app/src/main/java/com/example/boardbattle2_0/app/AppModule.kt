@@ -24,12 +24,10 @@ object AppModule {
     @Provides
     fun provideGson() = Gson()
 
-    @Singleton
     @Provides
     @Named(SAVER_WORKER_KEY)
     fun provideSaverWorkerWorkRequest() = OneTimeWorkRequestBuilder<SaverWorker>().build()
 
-    @Singleton
     @Provides
     @Named(CLEARER_WORKER_KEY)
     fun provideClearerWorkerWorkRequest() = OneTimeWorkRequestBuilder<ClearerWorker>().build()
