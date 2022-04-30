@@ -9,6 +9,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.filterNotNull
 import javax.inject.Inject
 
+/**
+ * ViewModel which handles all nav actions of app
+ */
 @HiltViewModel
 class NavViewModel @Inject constructor(application: Application): AndroidViewModel(application) {
     private val _navFlow = MutableStateFlow(NO_ACTION)

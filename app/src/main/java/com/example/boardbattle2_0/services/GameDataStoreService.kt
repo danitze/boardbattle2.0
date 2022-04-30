@@ -16,6 +16,9 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/**
+ * Service which manages saving game state when exiting the game
+ */
 @Singleton
 class GameDataStoreService @Inject constructor(
     @ApplicationContext private val context: Context,

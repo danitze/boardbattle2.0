@@ -7,6 +7,9 @@ import android.widget.Button
 import android.widget.FrameLayout
 import com.example.boardbattle2_0.R
 
+/**
+ * Class with game controller
+ */
 class ControllerView(
     context: Context, attrs: AttributeSet? = null
 ) : FrameLayout(context, attrs) {

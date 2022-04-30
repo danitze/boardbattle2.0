@@ -22,6 +22,9 @@ class BoardView(
     }
     private val cellSize = context.displayWidth / CELLS_HORIZONTAL
 
+    /**
+     * Initializes board, creates rows and cells
+     */
     init {
         layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
         val matrixLayout = LinearLayout(context)
@@ -42,17 +45,20 @@ class BoardView(
     private fun createCell(row: Int, column: Int): View {
         val cell = View(context)
         cell.layoutParams = LayoutParams(cellSize, cellSize)
-        cell.background = getColor(R.color.background_color_1) //TODO standard background image
+        cell.background = getColor(R.color.background_color_1)
         cells[row][column] = cell
         return cell
     }
 
+    /**
+     * Recolors cells according to game state
+     */
     fun setBoard(state: GameState) {
         val canPlace = state.canPlace()
         for(i in cells.indices) {
             for(j in cells[i].indices) {
                 cells[i][j]?.background = if(state.board[i][j][0] != 0) {
-                    if(canPlace) getColor(R.color.can_place_color) //TODO set normal backgrounds
+                    if(canPlace) getColor(R.color.can_place_color)
                     else getColor(R.color.cannot_place_color)
                 } else when(state.board[i][j][1]) {
                     1 -> getColor(R.color.player_1_color)

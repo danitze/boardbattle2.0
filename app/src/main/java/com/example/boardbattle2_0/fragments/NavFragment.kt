@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.boardbattle2_0.viewmodels.NavViewModel
 
+/**
+ * Superclass for all game fragments which provide convenient methods for correct navigation
+ * and allows to avoid repeating of code
+ */
 abstract class NavFragment : Fragment() {
 
     protected abstract val navViewModel: NavViewModel

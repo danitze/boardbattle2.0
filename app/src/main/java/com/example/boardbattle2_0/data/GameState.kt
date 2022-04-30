@@ -4,8 +4,11 @@ import com.example.boardbattle2_0.utils.CELLS_HORIZONTAL
 import com.example.boardbattle2_0.utils.CELLS_VERTICAL
 import com.example.boardbattle2_0.utils.PLAYERS_COUNT
 
+/**
+ * class which represents all the information about current game
+ */
 data class GameState (
-    //board[i, j, 0] - це поточний хід гравця, board[i, j, 1] - це доска з встановленими на попередніх ходах фігурами
+    //board[i][j][0] - current figure, board[i][j][1] - board with already placed figures
     val board: Array<Array<IntArray>> = Array(CELLS_VERTICAL) {
         Array(CELLS_HORIZONTAL) {
             IntArray(2) { 0 }
@@ -49,12 +52,21 @@ data class GameState (
         return result
     }
 
+    /**
+     * Remove active figure (which is not placed yet) from the board
+     */
     fun clearActiveFigure() = fillActiveMoveFigureWith(0)
 
+    /**
+     * Restore active figure on the board
+     */
     fun resetActiveFigure() = fillActiveMoveFigureWith(playerNum)
 
+    /**
+     * Check if active figure can be placed
+     */
     fun canPlace(): Boolean {
-        //Перевірка чи не перетинає наша форма переміщену фігуру
+        //Check if active figure does not overlap other figures
         for(i in yPos until yPos + figureHeight) {
             for (j in xPos until xPos + figureWidth) {
                 if(board[i][j][1] != 0) {
@@ -63,7 +75,7 @@ data class GameState (
             }
         }
 
-        //Перевірка початкового ходу
+        //Check initial step
         if(
             playerNum == 1 &&
             xPos == CELLS_HORIZONTAL - figureWidth &&
@@ -76,7 +88,8 @@ data class GameState (
             return true
         }
 
-        //Перевірка по краях згори і знизу фігури
+        //Checking for neighbour cells of current player
+        //Check from top
         if(yPos > 0) {
             for(i in xPos until xPos + figureWidth) {
                 if(board[yPos - 1][i][1] == playerNum) {
@@ -85,6 +98,7 @@ data class GameState (
             }
         }
 
+        //Check from bottom
         if(yPos + figureHeight < CELLS_VERTICAL) {
             for(i in xPos until xPos + figureWidth) {
                 if(board[yPos + figureHeight][i][1] == playerNum) {
@@ -93,7 +107,7 @@ data class GameState (
             }
         }
 
-        //Перевірка по краях зліва і справа фігури
+        //Check from left
         if(xPos > 0) {
             for(i in yPos until yPos + figureHeight) {
                 if(board[i][xPos - 1][1] == playerNum) {
@@ -102,6 +116,7 @@ data class GameState (
             }
         }
 
+        //Check from right
         if(xPos + figureWidth < CELLS_HORIZONTAL) {
             for(i in yPos until yPos + figureHeight) {
                 if(board[i][xPos + figureWidth][1] == playerNum) {

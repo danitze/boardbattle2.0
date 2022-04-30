@@ -5,6 +5,9 @@ import android.media.MediaPlayer
 import android.util.AttributeSet
 import com.example.boardbattle2_0.R
 
+/**
+ * Class for button which plays custom sound instead of basic one when clicked
+ */
 class AppButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null

@@ -11,6 +11,9 @@ import kotlinx.coroutines.flow.asSharedFlow
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/**
+ * Service which manages game actions
+ */
 @Singleton
 @Suppress("ControlFlowWithEmptyBody")
 class GameService @Inject constructor() {
@@ -123,6 +126,8 @@ class GameService @Inject constructor() {
         emitGameState()
     }
 
+    private suspend fun emitGameState() = _gameStatesFlow.emit(gameState)
+
     private fun actionRight() = with(gameState) {
         if (xPos + figureWidth < CELLS_HORIZONTAL) {
             clearActiveFigure()
@@ -191,8 +196,10 @@ class GameService @Inject constructor() {
         return moved
     }
 
-    private suspend fun emitGameState() = _gameStatesFlow.emit(gameState)
-
+    /**
+     * Check whether current player can place generated figure somewhere.
+     * If not, player's turn is skipped
+     */
     private fun isPlaceForFigure() = with(gameState.copy()) {
         for (i in 0..CELLS_VERTICAL - figureHeight) {
             for (j in 0..CELLS_HORIZONTAL - figureWidth) {
