@@ -17,9 +17,9 @@ import com.example.boardbattle2_0.utils.TO_SETTINGS
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MenuFragment : Fragment() {
+class MenuFragment : NavFragment() {
 
-    private val viewModel: NavViewModel by hiltNavGraphViewModels(R.id.main_nav)
+    override val navViewModel: NavViewModel by hiltNavGraphViewModels(R.id.main_nav)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +42,7 @@ class MenuFragment : Fragment() {
 
     private fun setUpObservers() {
         lifecycleScope.launchWhenStarted {
-            viewModel.navFlow.collect {
+            navViewModel.navFlow.collect {
                 when(it) {
                     TO_GAME -> navigateAndReset(R.id.action_menu_to_game)
                     TO_SETTINGS -> navigateAndReset(R.id.action_menu_to_settings)
@@ -53,15 +53,10 @@ class MenuFragment : Fragment() {
     }
 
     private fun onClick(view: View) = when(view.id) {
-        R.id.playBtn -> viewModel.navigate(TO_GAME)
-        R.id.settingsBtn -> viewModel.navigate(TO_SETTINGS)
-        R.id.exitBtn -> viewModel.navigate(TO_EXIT)
+        R.id.playBtn -> navViewModel.navigate(TO_GAME)
+        R.id.settingsBtn -> navViewModel.navigate(TO_SETTINGS)
+        R.id.exitBtn -> navViewModel.navigate(TO_EXIT)
         else -> {}
-    }
-
-    private fun navigateAndReset(navActionRes: Int) {
-        viewModel.reset()
-        findNavController().navigate(navActionRes)
     }
 
 }

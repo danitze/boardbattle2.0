@@ -28,10 +28,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class GameFragment : Fragment() {
+class GameFragment : NavFragment() {
 
     private val viewModel: GameViewModel by viewModels()
-    private val navViewModel: NavViewModel by hiltNavGraphViewModels(R.id.main_nav)
+    override val navViewModel: NavViewModel by hiltNavGraphViewModels(R.id.main_nav)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -91,8 +91,7 @@ class GameFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             navViewModel.navFlow.collect {
                 if(it == TO_MENU) {
-                    navViewModel.reset()
-                    findNavController().popBackStack()
+                    popBackStackAndReset()
                 }
             }
         }

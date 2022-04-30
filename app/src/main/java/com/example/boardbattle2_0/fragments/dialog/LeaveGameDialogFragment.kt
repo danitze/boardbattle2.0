@@ -13,7 +13,7 @@ import com.example.boardbattle2_0.utils.TO_MENU
 
 class LeaveGameDialogFragment : DialogFragment() {
 
-    private val viewModel: NavViewModel by navGraphViewModels(R.id.main_nav)
+    private val navViewModel: NavViewModel by navGraphViewModels(R.id.main_nav)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +28,7 @@ class LeaveGameDialogFragment : DialogFragment() {
 
     private fun setUpControllers(view: View) {
         view.findViewById<Button>(R.id.acceptBtn).setOnClickListener {
-            viewModel.navigate(TO_MENU)
+            navViewModel.navigate(TO_MENU)
             dismiss()
         }
         view.findViewById<Button>(R.id.denyBtn).setOnClickListener {
