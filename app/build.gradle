@@ -6,10 +6,18 @@ plugins {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('/Users/danilandreev/Desktop/board_battle_keystore.uu')
+            storePassword '1TestFapm_dima'
+            keyPassword '1TestFapm_dima'
+            keyAlias 'BoardBattleAliasKey'
+        }
+    }
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.boardbattle2_0"
+        applicationId "com.boardbattle"
         minSdk 24
         targetSdk 31
         versionCode 1
@@ -21,6 +29,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

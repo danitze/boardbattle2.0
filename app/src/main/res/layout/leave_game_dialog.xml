@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.boardbattle2_0.views.AppButton
+    <com.boardbattle.views.AppButton
         android:id="@+id/acceptBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/questionTv" />
 
-    <com.example.boardbattle2_0.views.AppButton
+    <com.boardbattle.views.AppButton
         android:id="@+id/denyBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <com.example.boardbattle2_0.views.AppButton
+    <com.boardbattle.views.AppButton
         android:id="@+id/upBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
         android:textSize="35sp"
         android:text="@string/up_btn_text" />
 
-    <com.example.boardbattle2_0.views.AppButton
+    <com.boardbattle.views.AppButton
         android:id="@+id/downBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
         android:textSize="35sp"
         android:text="@string/down_btn_text" />
 
-    <com.example.boardbattle2_0.views.AppButton
+    <com.boardbattle.views.AppButton
         android:id="@+id/leftBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
         android:textSize="35sp"
         android:text="@string/left_btn_text" />
 
-    <com.example.boardbattle2_0.views.AppButton
+    <com.boardbattle.views.AppButton
         android:id="@+id/rightBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

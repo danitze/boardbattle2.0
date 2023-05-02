@@ -7,7 +7,7 @@
     android:background="@color/background_color_2"
     tools:context=".fragments.GameFragment">
 
-    <com.example.boardbattle2_0.views.ControllerView
+    <com.boardbattle.views.ControllerView
         android:id="@+id/controllerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
         app:layout_constraintStart_toEndOf="@id/controllerView"
         app:layout_constraintTop_toTopOf="@id/controllerView">
 
-        <com.example.boardbattle2_0.views.AppButton
+        <com.boardbattle.views.AppButton
             android:id="@+id/turnBtn"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -35,7 +35,7 @@
             android:textColor="@color/dark_add_color"
             android:textSize="40sp" />
 
-        <com.example.boardbattle2_0.views.AppButton
+        <com.boardbattle.views.AppButton
             android:id="@+id/placeBtn"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -48,7 +48,7 @@
 
     </LinearLayout>
 
-    <com.example.boardbattle2_0.views.BoardView
+    <com.boardbattle.views.BoardView
         android:id="@+id/boardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

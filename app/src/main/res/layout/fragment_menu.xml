@@ -9,7 +9,7 @@
     android:background="@color/background_color_1"
     tools:context=".fragments.MenuFragment">
 
-    <com.example.boardbattle2_0.views.AppButton
+    <com.boardbattle.views.AppButton
         android:id="@+id/playBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="@+id/settingsBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.boardbattle2_0.views.AppButton
+    <com.boardbattle.views.AppButton
         android:id="@+id/settingsBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playBtn" />
 
-    <com.example.boardbattle2_0.views.AppButton
+    <com.boardbattle.views.AppButton
         android:id="@+id/exitBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
